@@ -1,26 +1,3 @@
-<template>
-  <div id="app">
-    <vue-admin-sidebar
-        :menu="menu"
-        :relative="true"
-        :collapsed="collapsed"
-    >
-      <template #header>
-        <span>header</span>
-      </template>
-    </vue-admin-sidebar>
-
-    <div class="main">
-      <header class="header">
-        <button @click="collapsed.value = !collapsed.value">Toggle Button</button>
-      </header>
-      <div class="content-wrapper">
-        <router-view></router-view>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
 import Vue from "vue";
 import VueAdminSidebar from "@/entry";
@@ -151,6 +128,29 @@ export default Vue.extend({
   },
 });
 </script>
+
+<template>
+  <div id="app">
+    <vue-admin-sidebar
+        :menu="menu"
+        :relative="true"
+        :collapsed="collapsed"
+    >
+      <template #header>
+        <span>header</span>
+      </template>
+    </vue-admin-sidebar>
+
+    <div class="main">
+      <header class="header">
+        <button @click="collapsed.value = !collapsed.value">Toggle Button</button>
+      </header>
+      <div class="content-wrapper">
+        <router-view></router-view>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style lang="scss">
 * {

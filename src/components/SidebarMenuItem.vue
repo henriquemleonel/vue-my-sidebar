@@ -275,13 +275,17 @@ export default {
       v-bind="item.props"
   />
   <div
-      v-else-if="item.header && !isItemHidden"
+      v-else-if="item.header"
       class="vsm--header"
       :class="item.class"
       v-bind="item.attributes"
   >
-    {{ item.title }}
+    <span v-if="!isItemHidden" class="vsm--title">{{ item.title }}</span>
+    <div v-else class="vsm--header__ghost">
+<!--      <span>ghost</span>-->
+    </div>
   </div>
+
   <div
       v-else-if="!isItemHidden"
       class="vsm--item"
@@ -319,7 +323,11 @@ export default {
             class="vsm--arrow"
             :class="[{'vsm--arrow_open' : show}, {'vsm--arrow_slot' : $slots['dropdown-icon']}]"
         >
-          <slot name="dropdown-icon" />
+          <slot name="dropdown-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.34317 7.75732L4.92896 9.17154L12 16.2426L19.0711 9.17157L17.6569 7.75735L12 13.4142L6.34317 7.75732Z" fill="currentColor" />
+            </svg>
+          </slot>
         </div>
       </template>
     </sidebar-menu-link>

@@ -1,25 +1,37 @@
 .v-sidebar-menu {
   &.vsm--background{
-    background-color: $base-bg;
+    background-color: $vsm--background-color;
   }
 
   .vsm--link {
-    color: $item-color;
+    color: $vsm--item-color;
 
     &_exact-active,
     &_active {
-      color: $item-active-color;
-      //background-color: $item-active-bg;
+      color: $vsm--item-color-active;
+      //background-color: $vsm--item-bg-active;
     }
 
     &_level-1 {
 
       &.vsm--link_exact-active,
       &.vsm--link_active {
-        //box-shadow: 3px 0px 0px 0px $primary-color inset;
         position: relative;
 
         &::before {
+          $dot-size: 8px;
+          position: absolute;
+          content: '';
+          top: 0;
+          left: 0;
+          z-index: 9999;
+          height: 100%;
+          width: 4px;
+          background-color: $vsm--accent-color;
+          border-radius: 0 4px 4px 0;
+        }
+
+        &::after {
           $dot-size: 8px;
           position: absolute;
           content: '';
@@ -30,29 +42,29 @@
           width: $dot-size;
           transform: translateY(-50%);
 
-          background-color: $accent-color;
+          background-color: $vsm--accent-color;
           border-radius: 50%;
         }
 
         & .vsm--icon {
-          color: $icon-active-color;
-          background-color: $icon-active-bg;
+          color: $vsm--icon-color-active;
+          background-color: $vsm--icon-bg-active;
         }
       }
 
       & .vsm--icon {
-        background-color: $icon-bg;
+        background-color: $vsm--icon-bg;
       }
     }
 
     &_level-2 {
-      padding: $item-padding;
+      padding: $vsm--item-padding;
     }
 
     &_hover,
     &:hover {
-      color: $item-hover-color;
-      background-color: $item-hover-bg;
+      color: $vsm--item-color-hover;
+      background-color: $vsm--item-bg-hover;
     }
 
     &_mobile-item {
@@ -77,15 +89,15 @@
   }
 
   .vsm--icon {
-    color: $icon-color;
+    color: $vsm--icon-color;
   }
 
   .vsm--dropdown {
-    padding: 0 0 0 $icon-width;
+    padding: 0 0 0 $vsm--icon-width;
 
     & .vsm--list {
       padding: 8px;
-      border: 1px solid $line-color;
+      border: 1px solid $vsm--line-color;
       border-radius: 8px;
     }
 
@@ -119,12 +131,12 @@
     .vsm--item_open {
       .vsm--link {
         &_level-1 {
-          color: $item-open-color;
-          background-color: $item-open-bg;
+          color: $vsm--item-color-open;
+          background-color: $vsm--item-bg-open;
 
           & .vsm--icon {
-            color: $icon-open-color;
-            background-color: $icon-open-bg;
+            color: $vsm--icon-color-open;
+            background-color: $vsm--icon-bg-open;
           }
         }
       }
@@ -135,21 +147,21 @@
 
     .vsm--link_level-1.vsm--link_active,
     .vsm--link_level-1.vsm--link_exact-active {
-      //box-shadow: -3px 0px 0px 0px $primary-color inset;
+      //box-shadow: -3px 0px 0px 0px $vsm--primary-color inset;
     }
   }
 
   .vsm--header {
-    color: rgba($item-color, 0.7);
+    color: rgba($vsm--item-color, 0.7);
   }
 
   .vsm--badge_default {
-    color: $item-color;
-    background-color: darken($base-bg, 5%);
+    color: $vsm--item-color;
+    background-color: darken($vsm--background-color, 5%);
   }
 
   .vsm--toggle-btn {
-    color: $item-color;
-    background-color: darken($base-bg, 5%);
+    color: $vsm--item-color;
+    background-color: darken($vsm--background-color, 5%);
   }
 }

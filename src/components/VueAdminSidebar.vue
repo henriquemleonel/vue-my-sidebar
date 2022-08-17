@@ -247,7 +247,9 @@ export default {
         </button>
       </div>
 
-      <slot name="header" />
+      <div class="vsm--area slot--mask">
+        <slot name="header" />
+      </div>
 
       <div
           class="vsm--scroll-wrapper"

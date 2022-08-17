@@ -16,9 +16,9 @@
   text-align: left;
   transition: 0.3s all ease;
 
-  background-color: $base-bg;
-  border-right: 1px solid $line-color;
-  padding: 1rem .5rem;
+  background-color: $vsm--background-color;
+  border-right: 1px solid $vsm--line-color;
+  padding: $vsm--sidebar-padding;
 
   @media (max-width: 992px) {
     position: fixed;
@@ -31,16 +31,38 @@
     padding: 0 8px 0 0;
   }
 
-  .vsm--dropdown >.vsm--list {
+  .vsm--dropdown > .vsm--list {
     padding: 5px;
+  }
+
+  .vsm--area {
+    min-height: $vsm--item-line-height;
+    height: fit-content;
+    width: 100%;
+    margin: 0 0 24px 0;
+    padding: 0 16px;
+
+    &.slot--mask {
+      min-height: $vsm--item-height;
+      border: 1px dashed transparent;
+      border-radius: 12px;
+      transition: border .4s ease;
+
+      &:hover {
+        border-color: $vsm--line-color;
+      }
+    }
   }
 
   .vsm--header {
     padding: .5rem 1rem;
     margin: 1.5rem 0 .5rem 0;
-    //border-bottom: 1px solid $line-color;
+    min-height: $vsm--item-height;
+    //border-top: 1px solid $vsm--line-color;
 
-    color: $line-color;
+    color: $vsm--line-color;
+
+    font-family: "Nunito", "Helvetica", sans-serif;
     font-size: .75rem;
     font-weight: 600;
     white-space: nowrap;
@@ -66,9 +88,9 @@
     border-radius: 8px;
     margin-bottom: 4px;
 
-    font-size: $item-font-size;
+    font-size: $vsm--item-font-size;
     font-weight: 500;
-    line-height: $item-line-height;
+    line-height: $vsm--item-line-height;
     text-decoration: none;
 
     &_exact-active,
@@ -87,12 +109,12 @@
 
       .vsm--icon {
         flex-shrink: 0;
-        height: $icon-height;
-        width: $icon-width;
+        height: $vsm--icon-height;
+        width: $vsm--icon-width;
         border-radius: 8px;
 
         text-align: center;
-        line-height: $icon-height;
+        line-height: $vsm--icon-height;
       }
     }
   }
@@ -107,19 +129,23 @@
   }
 
   .vsm--arrow {
+    display: block;
     width: 2rem;
-    text-align: center;
-    font-style: normal;
-    font-weight: 700;
     transition: 0.3s transform ease;
 
+    :is(svg) {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin: auto 0;
+      color: $vsm--icon-color;
+    }
+
     &:after {
-      content: '\f105';
-      font-family: 'Font Awesome 5 Free';
+      display: none;
     }
 
     &_open {
-      transform: rotate(90deg);
+      transform: rotate(180deg);
     }
 
     &_slot:after {
@@ -141,13 +167,6 @@
     }
   }
 
-  .vsm--area {
-    min-height: $item-line-height;
-    height: fit-content;
-    width: 100%;
-    margin: 0 0 24px 0;
-  }
-
   .vsm--toggle-btn {
     $toggle-size: 24px;
     $toggle-icon-size: 16px;
@@ -165,8 +184,8 @@
     right: -12px;
     z-index: 9999;
 
-    border: 1px solid $line-color;
-    box-shadow: 0 0 1px $line-color;
+    border: 1px solid $vsm--line-color;
+    box-shadow: 0 0 1px $vsm--line-color;
     background-color: rgba(20, 20, 20, .4);
     cursor: pointer;
     text-align: center;
@@ -176,7 +195,7 @@
     :is(svg) {
       width: $toggle-icon-size;
       height: $toggle-icon-size;
-      color: $line-color;
+      color: $vsm--line-color;
     }
 
     &:after {
@@ -277,6 +296,6 @@
   .vsm--mobile-item >.vsm--item >.vsm--link {
     margin: 0 !important;
     background-color: transparent !important;
-    line-height: $icon-height !important;
+    line-height: $vsm--icon-height !important;
   }
 }
