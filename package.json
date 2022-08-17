@@ -34,6 +34,9 @@
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.1.2",
+    "@fortawesome/free-regular-svg-icons": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "node-sass": "^6.0.0",
     "sass-loader": "^10.2.0",
     "vue-router": "^3.5.1",
@@ -50,7 +53,7 @@
     "@vue/cli-plugin-babel": "^4.5.10",
     "@vue/cli-service": "^4.5.10",
     "cross-env": "^7.0.3",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "rollup": "^2.36.1",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-vue": "^5.1.9",
