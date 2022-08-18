@@ -5,23 +5,29 @@ $vsm--line-color: rgb(58, 58, 60);
 $vsm--background-color: #2a2a2e !default;
 $vsm--accent-color: #4285f4 !default;
 
+$vsm--opacity: .87;
+$vsm--opacity-active: .68;
+$vsm--opacity-disabled: .37;
+
 // @sidebar
-$vsm--sidebar-padding: 0 !default;
+$vsm--sidebar-padding: 16px 0 0 0 !default;
+
+$vsm--area-padding: 8px 0 !default;
+$vsm--area-margin: 0 0 24px 0 !default;
+
+$vsm--scrollbar-track-color: #333;
+$vsm--scrollbar-thumb-color: #999;
 
 // @dropdown
 $dropdown-color: null !default;
 $dropdown-bg: lighten( $vsm--background-color, 5% ) !default;
 
 // @item
-$vsm--item-height: 32px !default;
-$vsm--item-padding: 8px 0 !default;
+$vsm--item-height: 45px !default;
+$vsm--item-padding: 6px 10px !default;
 $vsm--item-font-size: 16px !default;
 $vsm--item-line-height: 18px !default;
-
-
-$vsm--opacity: .87;
-$vsm--opacity-active: .68;
-$vsm--opacity-disabled: .37;
+$vsm--item-radius: 8px;
 
 
 $vsm--item-color: #ffffff !default;
@@ -35,7 +41,7 @@ $vsm--item-bg-active: null !default;
 
 
 // @icon
-$vsm--icon-color: null !default;
+$vsm--icon-color: #FFF !default;
 $vsm--icon-color-open: null !default;
 $vsm--icon-color-active: null !default;
 $vsm--icon-bg: darken( $vsm--background-color, 5% ) !default;

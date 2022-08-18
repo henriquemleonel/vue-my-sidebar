@@ -1,6 +1,21 @@
 .v-sidebar-menu {
   * {
     box-sizing: border-box;
+
+    scrollbar-color: $vsm--scrollbar-thumb-color $vsm--scrollbar-track-color;
+    &::-webkit-scrollbar {
+      scrollbar-width: thin;
+      width: 3px; /* Mostly for vertical scrollbars */
+      height: 8px; /* Mostly for horizontal scrollbars */
+    }
+    &::-webkit-scrollbar-thumb { /* Foreground */
+      background: $vsm--scrollbar-thumb-color;
+      border-radius: 2px;
+    }
+    &::-webkit-scrollbar-track { /* Background */
+      width: 3px;
+      background: $vsm--scrollbar-track-color;
+    }
   }
 
   position: relative;
@@ -28,36 +43,42 @@
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 0 8px 0 0;
+    padding: 0 4px 0 0;
+
+    & > .vsm--list {
+      //overflow-x: hidden;
+      margin: 0;
+    }
   }
 
   .vsm--dropdown > .vsm--list {
-    padding: 5px;
+    //padding: 4px;
   }
 
   .vsm--area {
-    min-height: $vsm--item-line-height;
+    position: relative;
+    min-height: $vsm--item-height;
     height: fit-content;
     width: 100%;
-    margin: 0 0 24px 0;
-    padding: 0 16px;
+    margin: $vsm--area-margin;
 
     &.slot--mask {
       min-height: $vsm--item-height;
       border: 1px dashed transparent;
-      border-radius: 12px;
       transition: border .4s ease;
+      padding: $vsm--item-padding;
 
       &:hover {
+        cursor: pointer;
         border-color: $vsm--line-color;
       }
     }
-  }
+   }
 
   .vsm--header {
     padding: .5rem 1rem;
     margin: 1.5rem 0 .5rem 0;
-    min-height: $vsm--item-height;
+    min-height: $vsm--item-line-height;
     //border-top: 1px solid $vsm--line-color;
 
     color: $vsm--line-color;
@@ -74,19 +95,25 @@
     display: block;
     width: 100%;
     white-space: nowrap;
+    margin: 0 0 4px 0;
+
+    &:last-child {
+      margin: 0;
+    }
   }
 
   .vsm--link {
     display: flex;
     align-items: center;
     position: relative;
+    min-height: $vsm--item-height;
+    gap: 12px;
     z-index: 20;
     cursor: pointer;
     user-select: none;
     transition: 0.3s all ease;
-    padding: .35rem .5rem !important;
-    border-radius: 8px;
-    margin-bottom: 4px;
+    padding: $vsm--item-padding;
+    border-radius: $vsm--item-radius;
 
     font-size: $vsm--item-font-size;
     font-weight: 500;
@@ -103,12 +130,21 @@
       pointer-events: none;
     }
 
+    &_dotted {
+      &::before {
+        display: none !important;
+      }
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+
     &_level-1 {
-      padding: .35rem .25rem;
-      border-radius: 8px;
 
       .vsm--icon {
         flex-shrink: 0;
+        color: $vsm--icon-color;
         height: $vsm--icon-height;
         width: $vsm--icon-width;
         border-radius: 8px;
@@ -121,7 +157,6 @@
 
   .vsm--icon {
     display: inline-block;
-    margin-right: 1rem;
   }
 
   .vsm--title {
@@ -130,10 +165,11 @@
 
   .vsm--arrow {
     display: block;
-    width: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     transition: 0.3s transform ease;
 
-    :is(svg) {
+    :is(svg, i) {
       width: 1.5rem;
       height: 1.5rem;
       margin: auto 0;
@@ -180,9 +216,10 @@
     overflow: hidden;
 
     position: absolute;
-    //top: 0;
+    top: 50%;
     right: -12px;
     z-index: 9999;
+    transform: translateY(-50%);
 
     border: 1px solid $vsm--line-color;
     box-shadow: 0 0 1px $vsm--line-color;
@@ -293,9 +330,32 @@
     margin: 0 !important;
   }
 
+  .vsm--mobile-item {
+    & .vsm--item {
+      height: $vsm--icon-height !important;
+    }
+
+    & .vsm--link_mobile-item {
+      margin-left: 60px;
+    }
+
+    & .vsm--dropdown_mobile-item {
+      z-index: 99999;
+      margin: 4px 0 0 12px !important;
+      background-color: $vsm--background-color;
+      box-shadow: 2px 0 1px 1px lighten($vsm--background-color, .12%);
+    }
+  }
+
   .vsm--mobile-item >.vsm--item >.vsm--link {
-    margin: 0 !important;
-    background-color: transparent !important;
+    margin: 0 0 0 8px !important;
+    background-color: darken($vsm--background-color, .5%) !important;
+    backdrop-filter: blur(8px) saturate(120%);
     line-height: $vsm--icon-height !important;
+
+    padding: 4px 8px 4px 12px;
+    //border: 1px solid red;
+    min-height: 32px;
+    width: fit-content;
   }
 }

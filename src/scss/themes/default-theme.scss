@@ -32,18 +32,19 @@
         }
 
         &::after {
-          $dot-size: 8px;
-          position: absolute;
-          content: '';
-          top: 50%;
-          right: 5px;
-          z-index: 9999;
-          height: $dot-size;
-          width: $dot-size;
-          transform: translateY(-50%);
-
-          background-color: $vsm--accent-color;
-          border-radius: 50%;
+          display: none;
+          //$dot-size: 8px;
+          //position: absolute;
+          //content: '';
+          //top: 50%;
+          //right: 0;
+          //z-index: 9999;
+          //height: $dot-size;
+          //width: $dot-size;
+          //transform: translate3d(50%, -50%, 0);
+          //
+          //background-color: $vsm--accent-color;
+          //border-radius: 50%;
         }
 
         & .vsm--icon {
@@ -93,12 +94,14 @@
   }
 
   .vsm--dropdown {
-    padding: 0 0 0 $vsm--icon-width;
+    padding: 4px;
+    //padding: 0 0 0 $vsm--icon-width;
+    margin: 4px 0 0 $vsm--icon-width;
+    border: 1px solid $vsm--line-color;
+    border-radius: 12px;
 
     & .vsm--list {
-      padding: 8px;
-      border: 1px solid $vsm--line-color;
-      border-radius: 8px;
+      // todo here
     }
 
     & .vsm--link {
@@ -111,7 +114,7 @@
   }
 
   .vsm--mobile-bg {
-    background-color: $mobile-item-bg;
+    //background-color: $mobile-item-bg;
   }
 
   &.vsm_expanded {
@@ -129,7 +132,18 @@
     }
 
     .vsm--item_open {
+     .vsm--link_active {
+       &::after {
+         display: none;
+       }
+     }
+
       .vsm--link {
+
+        &::before {
+          display: none;
+        }
+
         &_level-1 {
           color: $vsm--item-color-open;
           background-color: $vsm--item-bg-open;
@@ -147,7 +161,7 @@
 
     .vsm--link_level-1.vsm--link_active,
     .vsm--link_level-1.vsm--link_exact-active {
-      //box-shadow: -3px 0px 0px 0px $vsm--primary-color inset;
+      box-shadow: -3px 0px 0px 0px $vsm--primary-color inset;
     }
   }
 

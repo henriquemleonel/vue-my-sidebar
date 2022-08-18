@@ -43,6 +43,10 @@ export default {
       type: Boolean,
       default: false
     },
+    hideHeaders: {
+      type: Boolean,
+      default: true
+    },
     rtl: {
       type: Boolean,
       default: false
@@ -275,15 +279,12 @@ export default {
       v-bind="item.props"
   />
   <div
-      v-else-if="item.header"
+      v-else-if="item.header && !isItemHidden"
       class="vsm--header"
       :class="item.class"
       v-bind="item.attributes"
   >
-    <span v-if="!isItemHidden" class="vsm--title">{{ item.title }}</span>
-    <div v-else class="vsm--header__ghost">
-<!--      <span>ghost</span>-->
-    </div>
+    <span class="vsm--title">{{ item.title }}</span>
   </div>
 
   <div
@@ -318,6 +319,7 @@ export default {
             v-if="item.badge"
             :badge="item.badge"
         />
+
         <div
             v-if="itemHasChild"
             class="vsm--arrow"

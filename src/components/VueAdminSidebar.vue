@@ -13,19 +13,19 @@ export default {
         },
         collapsed: {
             type: Object,
-            default: () => ({ value: false, width: "65px" }),
+            default: () => ({ value: false, width: "60px" }),
         },
         width: {
             type: String,
             default: "320px",
         },
+        theme: {
+          type: String,
+          default: "",
+        },
         showChild: {
             type: Boolean,
             default: false,
-        },
-        theme: {
-            type: String,
-            default: "",
         },
         showOneChild: {
             type: Boolean,
@@ -38,6 +38,10 @@ export default {
         hideToggle: {
             type: Boolean,
             default: false,
+        },
+        hideHeaders: {
+          type: Boolean,
+          default: true,
         },
         disableHover: {
             type: Boolean,
@@ -78,14 +82,14 @@ export default {
         },
         mobileItemStyle() {
             return {
+              /* from item
+              * this.rtl ? { "padding-right": this.sidebarWidth } : { "padding-left": this.sidebarWidth },
+              */
                 item: [
                     { position: "absolute" },
                     { top: `${this.mobileItemPos}px` },
                     this.rtl ? { right: "0px" } : { left: "0px" },
-                    this.rtl
-                        ? { "padding-right": this.sidebarWidth }
-                        : { "padding-left": this.sidebarWidth },
-                    this.rtl && { direction: "rtl" },
+                                        this.rtl && { direction: "rtl" },
                     { "z-index": 0 },
                     { width: `${this.parentWidth - this.parentOffsetLeft}px` },
                     { "max-width": this.width },
@@ -231,11 +235,19 @@ export default {
         @mouseleave="onMouseLeave"
         @mouseenter="onMouseEnter"
     >
-      <div class="vsm--area">
+      <div class="vsm--area slot--mask">
+        <slot name="logo">
+          <div class="vsm--icon_level-1">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M4 5C4 3.34315 5.34315 2 7 2H17C18.6569 2 20 3.34315 20 5V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V5ZM13 4H17C17.5523 4 18 4.44772 18 5V13H13V4ZM13 15V20H17C17.5523 20 18 19.5523 18 19V15H13ZM11 4H7C6.44771 4 6 4.44772 6 5V8H11V4ZM6 19V10H11V20H7C6.44772 20 6 19.5523 6 19Z" fill="currentColor" />
+            </svg>
+          </div>
+        </slot>
+
         <button
             v-if="!hideToggle"
             class="vsm--toggle-btn"
-            :class="[{'collapsed': collapsed.value},{'vsm--toggle-btn_slot' : $slots['toggle-icon']}]"
+            :class="[{'collapsed': collapsed.value}, {'vsm--toggle-btn_slot' : $slots['toggle-icon']}]"
             @click="onToggleClick"
         >
           <slot name="toggle-icon">
@@ -247,7 +259,10 @@ export default {
         </button>
       </div>
 
-      <div class="vsm--area slot--mask">
+      <div
+          class="vsm--area"
+          :class="[{'slot--mask' : $slots['header']}]"
+      >
         <slot name="header" />
       </div>
 
@@ -262,15 +277,16 @@ export default {
               :item="item"
               :is-collapsed="collapsed.value"
               :active-show="activeShow"
-              :show-one-child="showOneChild"
               :show-child="showChild"
+              :show-one-child="showOneChild"
+              :hide-headers="hideHeaders"
               :rtl="rtl"
               :mobile-item="mobileItem"
               :disable-hover="disableHover"
               @set-mobile-item="setMobileItem"
               @unset-mobile-item="unsetMobileItem"
           >
-            <slot slot="dropdown-icon" name="dropdown-icon" />
+            <slot name="dropdown-icon" />
           </sidebar-menu-item>
         </div>
 
@@ -285,8 +301,9 @@ export default {
               :rtl="rtl"
               :disable-hover="disableHover"
           >
-            <slot slot="dropdown-icon" name="dropdown-icon" />
+            <slot name="dropdown-icon" />
           </sidebar-menu-item>
+
           <transition name="slide-animation">
             <div
                 v-if="mobileItem"
@@ -297,7 +314,12 @@ export default {
         </div>
       </div>
 
-      <slot name="footer" />
+      <div
+          class="vsm--area"
+          :class="[{'slot--mask' : $slots['footer']}]"
+      >
+        <slot name="footer" />
+      </div>
     </div>
     <div class="v-overlay" @click="onToggleClick"></div>
   </div>

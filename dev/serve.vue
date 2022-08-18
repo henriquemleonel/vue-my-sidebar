@@ -10,7 +10,7 @@ export default Vue.extend({
     return {
       collapsed: {
         value: false,
-        width: "60px",
+        width: "55px",
       },
       menu: [
         {

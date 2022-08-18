@@ -9,6 +9,8 @@ $dropdown-bg: #e3e3e3;
 $vsm--accent-color: #4285f4 !default;
 $vsm--line-color: rgb(231, 231, 233);
 
+$vsm--scrollbar-bg-color: #333;
+$vsm--scrollbar-track-color: #999;
 
 .v-sidebar-menu.vsm_white-theme {
   &.vsm--background {
@@ -28,7 +30,7 @@ $vsm--line-color: rgb(231, 231, 233);
 
       &.vsm--link_exact-active,
       &.vsm--link_active {
-        box-shadow: 3px 0px 0px 0px $vsm--primary-color inset;
+        box-shadow: 3px 0 0 0 $vsm--primary-color inset;
 
         & .vsm--icon {
           color: $vsm--icon-color-active;
