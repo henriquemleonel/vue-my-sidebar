@@ -93,6 +93,7 @@ export default {
         'vsm--link',
         !this.isMobileItem ? `vsm--link_level-${this.level}` : '',
         { 'vsm--link_mobile-item': this.isMobileItem },
+        { 'vsm--link_unchild': !this.itemHasChild },
         { 'vsm--link_hover': this.hover },
         { 'vsm--link_active': this.active },
         { 'vsm--link_exact-active': this.exactActive },

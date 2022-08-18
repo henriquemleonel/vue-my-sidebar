@@ -9,7 +9,7 @@ export default Vue.extend({
   data() {
     return {
       collapsed: {
-        value: false,
+        value: true,
         width: "55px",
       },
       menu: [

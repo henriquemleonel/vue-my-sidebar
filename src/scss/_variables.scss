@@ -48,8 +48,10 @@ $vsm--icon-bg: darken( $vsm--background-color, 5% ) !default;
 $vsm--icon-bg-open: $vsm--item-bg-open !default;
 $vsm--icon-bg-active: null !default;
 
-$vsm--icon-height: 32px !default;
-$vsm--icon-width: 32px !default;
+$vsm--icon-size-lg: 40px !default;
+$vsm--icon-size-md: 32px !default;
+$vsm--icon-size-sm: 24px !default;
+$vsm--icon-size-xs: 16px !default;
 
 $mobile-item-color: #fff !default;
 $mobile-item-bg: $vsm--primary-color !default;
