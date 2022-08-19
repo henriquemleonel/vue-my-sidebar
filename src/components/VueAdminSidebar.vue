@@ -1,10 +1,12 @@
 <script>
+import ScrollWrapper from "./ScrollWrapper.vue";
 import SidebarMenuItem from "./SidebarMenuItem.vue";
 
 export default {
     name: "VueAdminSidebar",
     components: {
-        SidebarMenuItem,
+      ScrollWrapper,
+      SidebarMenuItem,
     },
     props: {
         menu: {
@@ -122,6 +124,15 @@ export default {
         },
     },
     methods: {
+        onScroll (e) {
+          const target = e.target
+          const scrollY = e.target.scrollTop
+          if (scrollY > 50) {
+            console.log('scrolling', e)
+            target.classList.add('vsm--scroll_to-bottom')
+          }
+        },
+
         onMouseLeave() {
             this.unsetMobileItem(false, 300);
         },
@@ -131,6 +142,7 @@ export default {
                     clearTimeout(this.mobileItemTimeout);
             }
         },
+
         onToggleClick() {
             this.collapsed.value = !this.collapsed.value;
             this.mobileItem = null;
@@ -142,6 +154,7 @@ export default {
         onItemClick(event, item, node) {
             this.$emit("item-click", event, item, node);
         },
+
         setMobileItem({ item, itemEl }) {
             if (this.mobileItem === item) return;
             const sidebarTop = this.$el.getBoundingClientRect().top;
@@ -270,8 +283,7 @@ export default {
         <slot name="header" />
       </div>
 
-      <div
-          class="vsm--scroll-wrapper"
+      <ScrollWrapper
           :style="collapsed.value && [rtl ? {'margin-left': '-17px'} : {'margin-right': '-17px'}]"
       >
         <div class="vsm--list" :style="collapsed.value && {'width': collapsed.width}">
@@ -316,7 +328,7 @@ export default {
             />
           </transition>
         </div>
-      </div>
+      </ScrollWrapper>
 
       <div
           class="vsm--area"

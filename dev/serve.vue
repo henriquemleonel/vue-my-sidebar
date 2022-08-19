@@ -153,10 +153,30 @@ export default Vue.extend({
 </template>
 
 <style lang="scss">
+
+$vsm--scrollbar-track-color: #333;
+$vsm--scrollbar-thumb-color: #999;
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  scrollbar-color: $vsm--scrollbar-thumb-color $vsm--scrollbar-track-color;
+  &::-webkit-scrollbar {
+    scrollbar-width: thin;
+    width: 3px; /* Mostly for vertical scrollbars */
+    height: 8px; /* Mostly for horizontal scrollbars */
+  }
+  &::-webkit-scrollbar-thumb { /* Foreground */
+    background: $vsm--scrollbar-thumb-color;
+    border-radius: 2px;
+  }
+  &::-webkit-scrollbar-track { /* Background */
+    width: 3px;
+    background: $vsm--scrollbar-track-color;
+  }
 }
 
 #app {
