@@ -3,6 +3,7 @@ $vsm--primary-color: #4285f4 !default;
 $vsm--secondary-color: #a15dde !default;
 $vsm--line-color: rgb(58, 58, 60);
 $vsm--background-color: #2a2a2e !default;
+$vsm--glass-background: rgba(darken($vsm--background-color, 5%), 0.68) !default;
 $vsm--accent-color: #4285f4 !default;
 
 $vsm--opacity: .87;

@@ -43,35 +43,78 @@
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 16px 3px 16px 0;
+    padding: 0 3px;
+    border: 1px solid transparent;
+    transition: border-color .3s ease;
 
-    .vsm--top-mark, .vsm--bottom-mark {
-      height: $vsm--icon-size-sm;
-      width: $vsm--icon-size-sm;
-      position: sticky;
-      z-index: 9999;
-      left: 50%;
-      transform: translateX(-50%);
+    &.scroll--up {
+      border-bottom-color: $vsm--line-color;
 
-      outline: none;
-      border: 2px solid $vsm--line-color;
-      border-radius: 50%;
-      background-color: $vsm--background-color;
-
-      :is(svg, i) {
-        height: $vsm--icon-size-xs;
-        width: $vsm--icon-size-xs;
-        color: white;
+      & > .vsm--scroll-anchor.bottom-anchor {
+        // todo here
+        background-color: $vsm--glass-background;
       }
     }
 
-    .vsm--top-mark {
-      top: 0;
-      transform: translateX(-50%) translateY(-50%);
+    &.scroll--down {
+      border-top-color: $vsm--line-color;
+
+      & > .vsm--scroll-anchor.top-anchor {
+        // todo here
+        background-color: $vsm--glass-background;
+      }
     }
-    .vsm--bottom-mark {
-      bottom: 0;
-      transform: translateX(-50%) translateY(50%);
+
+    .vsm--scroll-anchor {
+      height: 12px;
+      width: 100%;
+      position: sticky;
+      z-index: 99999;
+      background-color: transparent;
+
+      &.top-anchor {
+        top: 0;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+
+        .vsm--scroll-setter {
+          transform: translateX(-50%) translateY(-50%);
+          box-shadow:
+                  0 -3px -5px rgba(0, 0, 0, 0.1),
+                  0 -3px -6px rgba(0, 0, 0, 0.1);
+        }
+      }
+      &.bottom-anchor {
+        bottom: 0;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+
+        .vsm--scroll-setter {
+          bottom: 0;
+          transform: translateX(-50%) translateY(50%);
+          box-shadow:
+                  0 3px 5px rgba(0, 0, 0, 0.1),
+                  0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .vsm--scroll-setter {
+        position: relative;
+        height: $vsm--icon-size-sm;
+        width: $vsm--icon-size-sm;
+        left: 50%;
+
+        outline: none;
+        border: 2px solid $vsm--line-color;
+        border-radius: 50%;
+        background-color: $vsm--background-color;
+
+        :is(svg, i) {
+          height: $vsm--icon-size-xs;
+          width: $vsm--icon-size-xs;
+          color: white;
+        }
+      }
     }
 
     & > .vsm--list {
