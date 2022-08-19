@@ -347,16 +347,21 @@
       box-shadow: 0 0 1px lighten($vsm--background-color, .12%);
     }
 
-    & .vsm--item.vsm--item_open {
+    & .vsm--item.vsm--item_level-1 {
       min-height: $vsm--item-height !important;
       display: flex;
       align-items: center;
       width: 100%;
 
-      .vsm--link.vsm--link_mobile-item, .vsm--link.vsm--link_unchild {
+      .vsm--link_mobile-item.vsm--link_level-1 {
         min-height: 32px;
         padding: 4px 12px !important;
         width: fit-content !important;
+        margin: 24px 0 0 0;
+
+        &::before {
+          display: none;
+        }
 
         .vsm--arrow {
           display: none;
@@ -369,7 +374,5 @@
     margin: 0 0 0 8px !important;
     background-color: darken($vsm--background-color, .5%) !important;
     backdrop-filter: blur(8px) saturate(120%);
-    border: 1px solid red;
-
   }
 }
