@@ -2,15 +2,29 @@
 export default {
   name: "ScrollWrapper",
 
+  props: {
+    hideTopAnchor: {
+      type: Boolean,
+      default: false
+    },
+    hideBottomAnchor: {
+      type: Boolean,
+      default: true
+    }
+  },
+
   data () {
     return {
-      position: [0, 0],
-      direction: '',
-
-      mark: {
-        top: 25,
-        bottom: 50
+      anchors: {
+        top: 50,
+        bottom: 50,
       },
+
+      scrollY: 0,
+      scrollX: 0,
+      isDownScroll: false,
+
+      boundingRect: null,
     }
   },
 
@@ -18,19 +32,55 @@ export default {
     wrapperClass () {
       return [
           'vsm--scroll-wrapper',
-          this.direction === 'down' ? 'scroll--down' : 'scroll--up'
+          this.isDownScroll ? 'scroll--down' : 'scroll--up'
       ]
+    },
+
+    isTopAnchorHidden () {
+      if (this.hideTopAnchor) {
+        return true
+      } else if (this.scrollY >  this.boundingRect?.height) {
+        console.log('overflow')
+        return false
+      } else return !this.isDownScroll && this.scrollY < this.anchors.top;
+    },
+
+    isBottomAnchorHidden () {
+      if (this.hideBottomAnchor) {
+        return true
+      } else return this.isDownScroll && this.scrollY < this.anchors.bottom;
+    },
+
+    getChildrenHeight () {
+      const slotSize = this.$children.length || 0
+      if (slotSize) {
+        return this.$el.children[1].getBoundingClientRect().height
+      }
+    }
+  },
+
+  watch: {
+    'scrollY' (currentY, oldY) {
+      this.isDownScroll = currentY > 0 && currentY > oldY
+    },
+    '$el' (value) {
+      console.log('binding h', value)
     }
   },
 
   methods: {
     onScroll (e) {
-      // const target = e.target
-      this.position = [0, e.target.scrollTop]
-      if (this.position[1] > this.mark.top) {
-        this.direction = 'down'
+      this.scrollY = e.target.scrollTop
+      if (!this.boundingRect) {
+        this.boundingRect = e.target.getBoundingClientRect()
+      }
+
+      // const percent = Math.round(this.scrollY / (this.boundingRect.height) * 100)
+      // console.log('percent', percent)
+      if (this.isDownScroll) {
+        // console.log('down')
       } else {
-        this.direction = 'up'
+        // console.log('up')
       }
     },
 
@@ -56,7 +106,7 @@ export default {
       <div class="vsm--scroll-anchor top-anchor">
         <button
             class="vsm--scroll-setter"
-            v-if="direction === 'down'"
+            v-if="!isTopAnchorHidden"
             @click="onScrollUp"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,10 +119,9 @@ export default {
     <slot />
 
     <transition name="appear-down">
-      <div class="vsm--scroll-anchor bottom-anchor">
+      <div class="vsm--scroll-anchor bottom-anchor" v-if="!isBottomAnchorHidden">
         <button
             class="vsm--scroll-setter"
-            v-if="direction === 'up'"
             @click="onScrollDown"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

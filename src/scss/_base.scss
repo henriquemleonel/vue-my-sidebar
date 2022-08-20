@@ -43,6 +43,7 @@
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    overscroll-behavior-y: contain;
     padding: 0 3px;
     border: 1px solid transparent;
     transition: border-color .3s ease;
@@ -66,7 +67,7 @@
     }
 
     .vsm--scroll-anchor {
-      height: 12px;
+      height: fit-content;
       width: 100%;
       position: sticky;
       z-index: 99999;
@@ -74,11 +75,12 @@
 
       &.top-anchor {
         top: 0;
+        padding-top: 4px;
         border-bottom-left-radius: 50%;
         border-bottom-right-radius: 50%;
 
         .vsm--scroll-setter {
-          transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%);
           box-shadow:
                   0 -3px -5px rgba(0, 0, 0, 0.1),
                   0 -3px -6px rgba(0, 0, 0, 0.1);
@@ -86,12 +88,12 @@
       }
       &.bottom-anchor {
         bottom: 0;
+        padding-bottom: 4px;
         border-top-left-radius: 50%;
         border-top-right-radius: 50%;
 
         .vsm--scroll-setter {
-          bottom: 0;
-          transform: translateX(-50%) translateY(50%);
+          transform: translateX(-50%);
           box-shadow:
                   0 3px 5px rgba(0, 0, 0, 0.1),
                   0 3px 6px rgba(0, 0, 0, 0.1);
@@ -108,6 +110,10 @@
         border: 2px solid $vsm--line-color;
         border-radius: 50%;
         background-color: $vsm--background-color;
+        
+        &:hover {
+          cursor: pointer;
+        }
 
         :is(svg, i) {
           height: $vsm--icon-size-xs;
