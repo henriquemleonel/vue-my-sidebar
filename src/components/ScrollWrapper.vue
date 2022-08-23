@@ -16,12 +16,13 @@ export default {
   data () {
     return {
       anchors: {
-        top: 50,
-        bottom: 50,
+        top: 150,
+        bottom: 80,
       },
 
       scrollY: 0,
       scrollX: 0,
+      isScrolling: false,
       isDownScroll: false,
 
       boundingRect: null,
@@ -49,13 +50,6 @@ export default {
       if (this.hideBottomAnchor) {
         return true
       } else return this.isDownScroll && this.scrollY < this.anchors.bottom;
-    },
-
-    getChildrenHeight () {
-      const slotSize = this.$children.length || 0
-      if (slotSize) {
-        return this.$el.children[1].getBoundingClientRect().height
-      }
     }
   },
 
@@ -69,7 +63,9 @@ export default {
   },
 
   methods: {
+
     onScroll (e) {
+      this.isScrolling = true
       this.scrollY = e.target.scrollTop
       if (!this.boundingRect) {
         this.boundingRect = e.target.getBoundingClientRect()
@@ -101,6 +97,7 @@ export default {
       ref="scroller"
       :class="wrapperClass"
       @scroll="onScroll"
+      @scroll.stop="isScrolling = false"
   >
     <transition name="appear-up">
       <div class="vsm--scroll-anchor top-anchor">

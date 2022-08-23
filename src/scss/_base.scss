@@ -21,12 +21,31 @@
     position: fixed;
   }
 
+  * {
+    box-sizing: border-box;
+
+    scrollbar-color: $vsm--scrollbar-thumb-color $vsm--scrollbar-track-color;
+    &::-webkit-scrollbar {
+      scrollbar-width: thin;
+      width: 3px; /* Mostly for vertical scrollbars */
+      height: 8px; /* Mostly for horizontal scrollbars */
+    }
+    &::-webkit-scrollbar-thumb { /* Foreground */
+      background: $vsm--scrollbar-thumb-color;
+      border-radius: 2px;
+    }
+    &::-webkit-scrollbar-track { /* Background */
+      width: 3px;
+      background: $vsm--scrollbar-track-color;
+    }
+  }
+
   &:not(.vsm_expanded, .vsm_collapsed) {
     padding: $vsm--space-md;
   }
 
   &.vsm_collapsed {
-    padding-top: $vsm--space-sm;
+    padding-top: $vsm--space-lg;
 
     .vsm--area {
       padding: 0 $vsm--space-sm;
@@ -34,11 +53,11 @@
     }
     .vsm--area.logo-area {
       padding: 0 $vsm--space-md;
-      margin-bottom: $vsm--space-md;
+      margin-bottom: $vsm--space-lg;
     }
 
-    .vsm--scroll-wrapper {
-      border-bottom-color: transparent;
+    & > .vsm--scroll-wrapper.scroll--up {
+      border-bottom-color: transparent !important;
     }
 
     .vsm--item_level-1 {
@@ -67,25 +86,6 @@
 
     .vsm--item_level-1, .vsm--header {
       padding: 0 $vsm--space-lg;
-    }
-  }
-
-  * {
-    box-sizing: border-box;
-
-    scrollbar-color: $vsm--scrollbar-thumb-color $vsm--scrollbar-track-color;
-    &::-webkit-scrollbar {
-      scrollbar-width: thin;
-      width: 3px; /* Mostly for vertical scrollbars */
-      height: 8px; /* Mostly for horizontal scrollbars */
-    }
-    &::-webkit-scrollbar-thumb { /* Foreground */
-      background: $vsm--scrollbar-thumb-color;
-      border-radius: 2px;
-    }
-    &::-webkit-scrollbar-track { /* Background */
-      width: 3px;
-      background: $vsm--scrollbar-track-color;
     }
   }
 
