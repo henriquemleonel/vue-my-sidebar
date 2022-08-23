@@ -7,7 +7,7 @@
 
     .vsm--link_level-1.vsm--link_hover,
     .vsm--link_level-1:hover {
-      .vsm--icon {
+      & > .vsm--icon-area {
         color: $mobile-icon-color;
         background-color: $mobile-icon-bg;
       }
@@ -45,7 +45,7 @@
           color: $vsm--item-color-open;
           background-color: $vsm--item-bg-open;
 
-          & .vsm--icon {
+          & .vsm--icon-area {
             color: $vsm--icon-color-open;
             background-color: $vsm--icon-bg-open;
           }
@@ -69,13 +69,13 @@
       &.vsm--link_active {
         position: relative;
 
-        & .vsm--icon {
+        & .vsm--icon-area {
           color: $vsm--icon-color-active;
           background-color: $vsm--icon-bg-active;
         }
       }
 
-      & .vsm--icon {
+      & .vsm--icon-area {
         background-color: $vsm--icon-bg;
       }
     }
@@ -100,7 +100,7 @@
     }
   }
 
-  .vsm--icon {
+  .vsm--icon-area {
     color: $vsm--icon-color;
   }
 
@@ -119,7 +119,7 @@
       color: $dropdown-color;
     }
 
-    & .vsm--icon {
+    & .vsm--icon-area > .vsm--icon {
       color: $dropdown-color;
     }
   }

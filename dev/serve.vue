@@ -21,7 +21,7 @@ export default Vue.extend({
         {
           href: "/",
           title: "Installation",
-          icon: "fa fa-download",
+          icon: "fa-solid fa-download",
         },
         {
           href: "/basic-usage",
@@ -41,7 +41,7 @@ export default Vue.extend({
         {
           href: "/events",
           title: "Events",
-          icon: "fa fa-bell",
+          icon: "fa-solid fa-house",
         },
         {
           href: "/styling",

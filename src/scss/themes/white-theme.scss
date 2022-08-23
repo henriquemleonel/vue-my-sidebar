@@ -32,13 +32,13 @@ $vsm--scrollbar-track-color: #999;
       &.vsm--link_active {
         box-shadow: 3px 0 0 0 $vsm--primary-color inset;
 
-        & .vsm--icon {
+        & .vsm--icon-area {
           color: $vsm--icon-color-active;
           background-color: $vsm--icon-bg-active;
         }
       }
 
-      & .vsm--icon {
+      & .vsm--icon-area {
         background-color: $vsm--icon-bg;
       }
     }
@@ -63,14 +63,14 @@ $vsm--scrollbar-track-color: #999;
 
     .vsm--link_level-1.vsm--link_hover,
     .vsm--link_level-1:hover {
-      .vsm--icon {
+      .vsm--icon-area {
         color: $mobile-icon-color;
         background-color: $mobile-icon-bg;
       }
     }
   }
 
-  .vsm--icon {
+  .vsm--icon-area {
     color: $vsm--icon-color;
   }
 
@@ -83,7 +83,7 @@ $vsm--scrollbar-track-color: #999;
       color: $dropdown-color;
     }
 
-    & .vsm--icon {
+    & .vsm--icon-area {
       color: $dropdown-color;
     }
   }

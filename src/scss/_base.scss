@@ -63,7 +63,7 @@
     .vsm--item_level-1 {
       margin-bottom: $vsm--space-md;
 
-      .vsm--icon {
+      .vsm--icon-area {
         min-width: 32px;
       }
 
@@ -286,24 +286,30 @@
 
     &_level-1 {
 
-      .vsm--icon {
+      & > .vsm--icon-area > .vsm--icon {
         flex-shrink: 0;
         color: $vsm--icon-color;
         height: $vsm--icon-size-md;
         width: $vsm--icon-size-md;
-        border-radius: 8px;
-
-        text-align: center;
-        line-height: $vsm--icon-size-md;
       }
     }
   }
 
-  .vsm--icon {
+  .vsm--icon-area {
     display: inline-block;
-    color: $vsm--icon-color;
     height: $vsm--icon-size-md;
     width: $vsm--icon-size-md;
+    text-align: center;
+    border-radius: 8px;
+
+    color: $vsm--icon-color;
+
+    & > .vsm--icon {
+      color: inherit;
+      height: $vsm--icon-size-md;
+      width: $vsm--icon-size-md;
+      line-height: $vsm--icon-size-md;
+    }
   }
 
   .vsm--title {
@@ -421,7 +427,7 @@
     text-align: right;
     direction: rtl;
 
-    & .vsm--icon {
+    & .vsm--icon-area {
       margin-left: 10px;
       margin-right: 0px;
     }
