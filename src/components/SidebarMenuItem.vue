@@ -285,7 +285,11 @@ export default {
       :class="item.class"
       v-bind="item.attributes"
   >
-    <span class="vsm--title">{{ item.title }}</span>
+    <div class="vsm--header_inner">
+      <span class="vsm--title">{{ item.title }}</span>
+    </div>
+
+    <slot name="header-options"/>
   </div>
 
   <div

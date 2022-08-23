@@ -15,7 +15,7 @@ export default {
         },
         collapsed: {
             type: Object,
-            default: () => ({ value: true, width: "55px" }),
+            default: () => ({ value: true, width: "65px" }),
         },
         width: {
             type: String,
@@ -244,13 +244,13 @@ export default {
 <template>
   <div>
     <div
-        class="v-sidebar-menu"
+        class="vsm-sidebar-menu"
         :class="sidebarClass"
         :style="`--width:${width}; --widthCollapsed:${collapsed.width}`"
         @mouseleave="onMouseLeave"
         @mouseenter="onMouseEnter"
     >
-      <div class="vsm--area slot--mask">
+      <div class="vsm--area logo-area">
         <slot name="logo">
           <div class="vsm--item">
             <div class="vsm--icon">
@@ -278,13 +278,13 @@ export default {
 
       <div
           class="vsm--area"
-          :class="[{'slot--mask' : $slots['header']}]"
+          :class="[{'area--hidden' : !$slots['header']}]"
       >
         <slot name="header" />
       </div>
 
       <ScrollWrapper
-          :style="collapsed.value && [rtl ? {'margin-left': '-17px'} : {'margin-right': '-17px'}]"
+          :style="collapsed.value && [rtl ? {'margin-left': '-17px'} : {'margin-right': '0'}]"
       >
         <div class="vsm--list" :style="collapsed.value && {'width': collapsed.width}">
           <sidebar-menu-item

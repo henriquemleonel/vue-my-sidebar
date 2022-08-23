@@ -1,81 +1,6 @@
-.v-sidebar-menu {
+.vsm-sidebar-menu {
   &.vsm--background{
     background-color: $vsm--background-color;
-  }
-
-  .vsm--link {
-    color: $vsm--item-color;
-
-    &_exact-active,
-    &_active {
-      color: $vsm--item-color-active;
-      //background-color: $vsm--item-bg-active;
-    }
-
-    &_level-1 {
-
-      &.vsm--link_exact-active,
-      &.vsm--link_active {
-        position: relative;
-
-        &::before {
-          $dot-size: 8px;
-          position: absolute;
-          content: '';
-          top: 0;
-          left: 0;
-          z-index: 9999;
-          height: 100%;
-          width: 4px;
-          background-color: $vsm--accent-color;
-          border-radius: 0 4px 4px 0;
-        }
-
-        &::after {
-          display: none;
-          //$dot-size: 8px;
-          //position: absolute;
-          //content: '';
-          //top: 50%;
-          //right: 0;
-          //z-index: 9999;
-          //height: $dot-size;
-          //width: $dot-size;
-          //transform: translate3d(50%, -50%, 0);
-          //
-          //background-color: $vsm--accent-color;
-          //border-radius: 50%;
-        }
-
-        & .vsm--icon {
-          color: $vsm--icon-color-active;
-          background-color: $vsm--icon-bg-active;
-        }
-      }
-
-      & .vsm--icon {
-        background-color: $vsm--icon-bg;
-      }
-    }
-
-    &_level-2 {
-      padding: $vsm--item-padding;
-    }
-
-    &_hover,
-    &:hover {
-      color: $vsm--item-color-hover;
-      background-color: $vsm--item-bg-hover;
-    }
-
-    &_mobile-item {
-      color: $mobile-item-color;
-
-      &.vsm--link_hover,
-      &:hover {
-        color: $mobile-item-color;
-      }
-    }
   }
 
   &.vsm_collapsed {
@@ -89,37 +14,9 @@
     }
   }
 
-  .vsm--icon {
-    color: $vsm--icon-color;
-  }
-
-  .vsm--dropdown {
-    padding: 4px;
-    //padding: 0 0 0 $vsm--icon-size-sm;
-    margin: 4px 0 0 $vsm--icon-size-md;
-    border: 1px solid $vsm--line-color;
-    border-radius: 12px;
-
-    & .vsm--list {
-      // todo here
-    }
-
-    & .vsm--link {
-      color: $dropdown-color;
-    }
-
-    & .vsm--icon {
-      color: $dropdown-color;
-    }
-  }
-
-  .vsm--mobile-bg {
-    //background-color: $mobile-item-bg;
-  }
-
   &.vsm_expanded {
-    min-width: var(--width);
     width: var(--width);
+    min-width: var(--width);
     transform: translateX(0);
 
     &+.v-overlay {
@@ -132,11 +29,11 @@
     }
 
     .vsm--item_open {
-     .vsm--link_active {
-       &::after {
-         display: none;
-       }
-     }
+      .vsm--link_active {
+        &::after {
+          display: none;
+        }
+      }
 
       .vsm--link {
 
@@ -155,6 +52,80 @@
         }
       }
     }
+  }
+
+  .vsm--link {
+    color: $vsm--item-color;
+
+    &_exact-active,
+    &_active {
+      color: $vsm--item-color-active;
+      //background-color: $vsm--item-bg-active;
+    }
+
+    &_level-1 {
+
+      &.vsm--link_exact-active,
+      &.vsm--link_active {
+        position: relative;
+
+        & .vsm--icon {
+          color: $vsm--icon-color-active;
+          background-color: $vsm--icon-bg-active;
+        }
+      }
+
+      & .vsm--icon {
+        background-color: $vsm--icon-bg;
+      }
+    }
+
+    &_level-2, &_level-3 {
+      padding: 4px 8px;
+    }
+
+    &_hover,
+    &:hover {
+      color: $vsm--item-color-hover;
+      background-color: $vsm--item-bg-hover;
+    }
+
+    &_mobile-item {
+      color: $mobile-item-color;
+
+      &.vsm--link_hover,
+      &:hover {
+        color: $mobile-item-color;
+      }
+    }
+  }
+
+  .vsm--icon {
+    color: $vsm--icon-color;
+  }
+
+  .vsm--dropdown {
+    padding: 4px;
+    //padding: 0 0 0 $vsm--icon-size-sm;
+    margin: 4px 0 4px $vsm--icon-size-md;
+    border: 1px solid $vsm--line-color;
+    border-radius: 12px;
+
+    & .vsm--list {
+      // todo here
+    }
+
+    & .vsm--link {
+      color: $dropdown-color;
+    }
+
+    & .vsm--icon {
+      color: $dropdown-color;
+    }
+  }
+
+  .vsm--mobile-bg {
+    //background-color: $mobile-item-bg;
   }
 
   &.vsm_rtl {

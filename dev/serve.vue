@@ -10,7 +10,7 @@ export default Vue.extend({
     return {
       collapsed: {
         value: true,
-        width: "55px",
+        width: "65px",
       },
       menu: [
         {
@@ -136,9 +136,6 @@ export default Vue.extend({
         :relative="true"
         :collapsed="collapsed"
     >
-      <template #header>
-        <span>header</span>
-      </template>
     </vue-admin-sidebar>
 
     <div class="main">
