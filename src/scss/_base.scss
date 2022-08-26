@@ -96,6 +96,7 @@
     overscroll-behavior-y: contain;
     border: 1px solid transparent;
     transition: border-color .3s ease;
+    position: relative;
 
     &.scroll--up {
       border-bottom-color: $vsm--line-color;
@@ -124,6 +125,7 @@
 
       &.top-anchor {
         top: 0;
+        right: 4px;
         padding-top: 4px;
         border-bottom-left-radius: 50%;
         border-bottom-right-radius: 50%;
@@ -150,16 +152,17 @@
       }
 
       .vsm--scroll-setter {
-        position: relative;
+        position: sticky;
         height: $vsm--icon-size-sm;
         width: $vsm--icon-size-sm;
+        right: -8px;
         left: 50%;
 
         outline: none;
         border: 2px solid $vsm--line-color;
         border-radius: 50%;
         background-color: $vsm--background-color;
-        
+
         &:hover {
           cursor: pointer;
         }
@@ -237,8 +240,15 @@
       margin-bottom: $vsm--space-xxs;
     }
 
-    &__level-2, &__level-3 {
+    &_level-2, &_level-3 {
       margin-bottom: $vsm--space-xxs;
+
+      .vsm--dropdown {
+        border-color: transparent;
+        border-left-color: $vsm--line-color;
+        border-radius: 0;
+        margin-left: 32px;
+      }
     }
 
     &:last-child {
@@ -291,6 +301,13 @@
         color: $vsm--icon-color;
         height: $vsm--icon-size-md;
         width: $vsm--icon-size-md;
+      }
+    }
+
+    &_level-2, &_level-3 {
+      .vsm--icon-area {
+        height: $vsm--icon-size-sm;
+        width: $vsm--icon-size-sm;
       }
     }
   }
@@ -523,6 +540,6 @@
   .vsm--mobile-item > .vsm--item > .vsm--link {
     margin: 0 0 0 8px !important;
     background-color: darken($vsm--background-color, .5%) !important;
-    backdrop-filter: blur(8px) saturate(120%);
+    //backdrop-filter: blur(8px) saturate(120%);
   }
 }

@@ -91,9 +91,8 @@ export default {
     itemLinkClass () {
       return [
         'vsm--link',
-        !this.isMobileItem ? `vsm--link_level-${this.level}` : '',
+        `vsm--link_level-${this.level}`,
         { 'vsm--link_mobile-item': this.isMobileItem },
-        { 'vsm--link_level-1': this.isFirstLevel },
         { 'vsm--link_hover': this.hover },
         { 'vsm--link_active': this.active },
         { 'vsm--link_exact-active': this.exactActive },
@@ -295,7 +294,7 @@ export default {
   <div
       v-else-if="!isItemHidden"
       class="vsm--item"
-      :class="[{'vsm--item_open' : show}, {'vsm--item_level-1': isFirstLevel}]"
+      :class="[{'vsm--item_open' : show}, `vsm--item_level-${this.level}`]"
       @mouseover="mouseOverEvent"
       @mouseout="mouseOutEvent"
   >

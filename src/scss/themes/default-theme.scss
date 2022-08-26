@@ -81,7 +81,7 @@
     }
 
     &_level-2, &_level-3 {
-      padding: 4px 8px;
+      padding: 8px 12px;
     }
 
     &_hover,
@@ -107,7 +107,7 @@
   .vsm--dropdown {
     padding: 4px;
     //padding: 0 0 0 $vsm--icon-size-sm;
-    margin: 4px 0 4px $vsm--icon-size-md;
+    margin: 4px 0 4px 50px;
     border: 1px solid $vsm--line-color;
     border-radius: 12px;
 
